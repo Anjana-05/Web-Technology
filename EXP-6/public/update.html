@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Update Student Information</h1>
+        <form id="updateForm">
+            <div id="formFields">
+                <!-- Form fields will be inserted here by JavaScript -->
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Update Student</button>
+                <button type="button" class="btn btn-secondary" onclick="location.href='/view'">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Get roll_no from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const roll_no = urlParams.get('roll_no');
+
+        // Fetch student data and populate form
+        fetch(`/api/students/${roll_no}`)
+            .then(response => response.json())
+            .then(student => {
+                const formFields = document.getElementById('formFields');
+                
+                // Create form fields for each student property
+                for (const [key, value] of Object.entries(student)) {
+                    if (key === '_id' || key === '__v') continue;
+                    
+                    const div = document.createElement('div');
+                    div.className = 'form-group';
+                    
+                    const label = document.createElement('label');
+                    label.textContent = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                    label.htmlFor = key;
+                    
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.className = 'form-control';
+                    input.id = key;
+                    input.name = key;
+                    input.value = value || '';
+                    
+                    div.appendChild(label);
+                    div.appendChild(input);
+                    formFields.appendChild(div);
+                }
+            });
+
+        // Handle form submission
+        document.getElementById('updateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {};
+            const inputs = document.querySelectorAll('#updateForm input');
+            inputs.forEach(input => {
+                formData[input.name] = input.value;
+            });
+
+            fetch(`/api/students/${roll_no}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Student updated successfully!');
+                    window.location.href = '/view';
+                } else {
+                    alert('Error updating student');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.record-container {
+    background-color: #d8f3dc;
+    border: 2px solid #003366;
+    padding: 40px;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    font-weight: bold; 
+}
+
+.college-title {
+    font-size: 24px;
+    color: #003366;
+}
+
+.student-record {
+    color: #003366;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.photo-container {
+    margin-bottom: 40px;
+}
+
+.photo-placeholder {
+    width: 150px;
+    height: 180px;
+    background-color: #ccc;
+    border: 1px solid #888;
+    margin: auto;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.input {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input label {
+    min-width: 180px;
+}
+
+.btn-container {
+    text-align: right;
+}
+
+.biodata-form {
+    background-color: #d8f3dc;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.biodata-form h3 {
+    color: #003366;
+    text-align: center;
+}
+.table input {
+    border: none;
+    background: transparent;
+}
+
+.book {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page .container{
+    width: 700px;
+    background-color: #d8f3dc;
+    padding: 20px;
+    border: 2px solid #003366;
+    border-radius: 10px;
+}
+
+.page.active {
+    display: block;
+}
+
+h2, h3 {
+    color:#003366;
+}
+
+.btn {
+    width: 150px;
+}
