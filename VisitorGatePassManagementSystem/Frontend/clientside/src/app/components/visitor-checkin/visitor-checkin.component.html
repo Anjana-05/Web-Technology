@@ -1,0 +1,74 @@
+<div class="container">
+    <h2 class="mb-0">Visitor Check-In</h2>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="checkInForm" (ngSubmit)="onSubmit()">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" formControlName="name" placeholder="Enter your full name">
+            <div *ngIf="f['name'].touched && f['name'].errors" class="error-message">
+              <span *ngIf="f['name'].errors['required']">Name is required</span>
+              <span *ngIf="f['name'].errors['minlength']">Minimum 2 characters required</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+            <div *ngIf="f['email'].touched && f['email'].errors" class="error-message">
+              <span *ngIf="f['email'].errors['required']">Email is required</span>
+              <span *ngIf="f['email'].errors['email']">Please enter a valid email</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactNumber">Contact Number</label>
+            <input type="tel" id="contactNumber" formControlName="contactNumber" placeholder="Enter phone number">
+            <div *ngIf="f['contactNumber'].touched && f['contactNumber'].errors" class="error-message">
+              <span *ngIf="f['contactNumber'].errors['required']">Phone number is required</span>
+              <span *ngIf="f['contactNumber'].errors['pattern']">Please enter 10 digits</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="purpose">Purpose of Visit</label>
+            <select id="purpose" formControlName="purpose">
+              <option value="" disabled selected>Select purpose</option>
+              <option value="Meeting">Meeting</option>
+              <option value="Delivery">Delivery</option>
+              <option value="Interview">Interview</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Other">Other</option>
+            </select>
+            <div *ngIf="f['purpose'].touched && f['purpose'].errors" class="error-message">
+              <span *ngIf="f['purpose'].errors['required']">Please select a purpose</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <div class="checkin-time">
+            <span>Check-In Time:</span>
+            <strong>{{ checkInTime | date:'medium' }}</strong>
+          </div>
+
+          <button type="submit" [disabled]="isSubmitting" class="btn-primary">
+            <span *ngIf="!isSubmitting">Check In Visitor</span>
+            <span *ngIf="isSubmitting">Processing...</span>
+          </button>
+          <div class="printer">
+            <div class="d-flex">
+              <button class="btn btn-outline-primary" type="button" (click)="printPass()">
+                <i class="bi bi-printer"></i> Print Pass
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

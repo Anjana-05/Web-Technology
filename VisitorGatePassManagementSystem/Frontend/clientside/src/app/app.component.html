@@ -1,0 +1,44 @@
+<div class="app-container">
+  <!-- Header/Navbar -->
+  <header class="app-header">
+    <div class="header-content">
+      <h1 class="system-title">
+        <i class="fas fa-id-card-alt"></i> Vizitor
+      </h1>
+      <div class="user-profile">
+        <a [routerLink]="['/admin-login']">Admin</a>
+      </div>
+    </div>
+  </header>
+  <!-- Main Content Area -->
+  <div class="app-main">
+    <!-- Sidebar Navigation -->
+    <nav class="app-sidebar">
+      <ul class="nav-links">
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/dashboard" class="nav-link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/checkin" class="nav-link">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Check In</span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/checkout" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+            <span>Check Out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Content Area - This will show the routed components -->
+    <div class="app-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<!-- Dashboard Content -->
+<div class="content-area">
+  <div class="content-header">
+    <h2><i class="fas fa-users"></i> Dashboard</h2>
+    <button class="btn btn-primary add-visitor-btn" routerLink="/checkin">
+      <i class="fas fa-user-plus"></i> Add Visitor
+    </button>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-cards">
+    <div class="stat-card">
+      <div class="stat-icon checked-in">
+        <i class="fas fa-user-clock"></i>
+      </div>
+      <div class="stat-info">
+        <h3>{{ checkedInCount }}</h3>
+        <p>Checked In</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon checked-out">
+        <i class="fas fa-user-check"></i>
+      </div>
+      <div class="stat-info">
+        <h3>{{ checkedOutCount }}</h3>
+        <p>Checked Out</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon total">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="stat-info">
+        <h3>{{ totalVisitors }}</h3>
+        <p>Total Today</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visitors Table -->
+  <div class="visitors-table-container">
+    <div class="table-header">
+      <h3>Recent Visitors</h3>
+      <div class="table-controls">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search visitors..." [(ngModel)]="searchQuery" (input)="filterVisitors()">
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="visitors-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Purpose</th>
+            <th>Check-In Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let visitor of filteredVisitors">
+            <td>
+              <div class="visitor-avatar">
+                <span>{{ visitor.name }}</span>
+              </div>
+            </td>
+            <td>{{ visitor.email }}<br>{{ visitor.contactNumber }}</td>
+            <td>{{ visitor.purpose }}</td>
+            <td>{{ visitor.checkInTime | date:'mediumDate' }}<br>{{ visitor.checkInTime | date:'shortTime' }}</td>
+            <td>
+              <span class="badge" [ngClass]="{
+                'checked-in': visitor.status === 'checked-in',
+                'checked-out': visitor.status === 'checked-out'
+              }">
+                {{ visitor.status | titlecase }}
+              </span>
+            </td>
+          </tr>
+          <tr *ngIf="filteredVisitors.length === 0">
+            <td colspan="6">
+              <div class="empty-state">
+                <div class="empty-icon">
+                  <i class="fas fa-users-slash"></i>
+                </div>
+                <h3>No Visitors Found</h3>
+                <p>There are currently no visitors matching your criteria.</p>
+                <button class="add-visitor-btn" routerLink="/checkin">
+                  Add Visitor
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+/* styles.css or your component's CSS file */
+:host {
+  display: block;
+  height: 100%;
+}
+
+h2{
+  color: #08676c;
+}
+.container {
+  display: flex;
+  padding: 1rem;
+  background-color: #f5f7fa;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 1000;
+  font-size: large;
+  color: #666;
+}
+
+input, select {
+  width: 80%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: #3f3737 0.3s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #3f51b5;
+  box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.checkin-time {
+  padding: 4px;
+  gap: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.checkin-time strong {
+  color: #333;
+}
+
+.btn-primary {
+  background: #08676c;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #0f5458;
+}
+
+.btn-primary:disabled {
+  background: #9fa8da;
+  cursor: not-allowed;
+}
+
+.printer button{
+  padding: 7px;
+  font-size: 16px;
+}

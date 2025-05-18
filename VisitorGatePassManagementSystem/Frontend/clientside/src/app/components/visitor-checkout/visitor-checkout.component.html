@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="mb-0">Visitor Check-Out</h2>
+</div>
+
+<form (ngSubmit)="searchVisitor()">
+  <input type="text" [(ngModel)]="searchId" name="searchId" placeholder="Enter Visitor ID" required />
+  <button type="submit">Search</button>
+</form>
+
+<div *ngIf="visitor">
+  <p><strong>Name:</strong> {{ visitor.name }}</p>
+  <p><strong>Check-In:</strong> {{ visitor.checkInTime }}</p>
+  <p><strong>Check-Out:</strong> {{ visitor.checkOutTime ? (visitor.checkOutTime | date:'short') : 'Not yet checked out' }}</p>
+
+  <button (click)="checkout()" [disabled]="visitor.checkOutTime">Check Out</button>
+</div>

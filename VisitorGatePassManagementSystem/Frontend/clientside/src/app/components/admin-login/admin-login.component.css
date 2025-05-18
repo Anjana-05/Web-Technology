@@ -1,0 +1,39 @@
+.admin-login-container {
+  max-width: 400px;
+  margin: 8% auto;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.admin-login-container h2 {
+  text-align: center;
+}
+
+h2{
+    color: #08676c;
+}
+.admin-login-container div {
+  margin-bottom: 15px;
+}
+.admin-login-container label {
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 10px;
+}
+.admin-login-container input {
+  width: 50%;
+  padding: 8px;
+  border-radius: 4px;
+}
+.admin-login-container button {
+  width: 20%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.admin-login-container button:hover {
+  background-color: rgb(65, 64, 64);
+}
